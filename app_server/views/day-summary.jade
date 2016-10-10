@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  #banner.page-header
+    .row
+      .col-lg-6
+        h1= pageHeader.title
+          small &nbsp;#{pageHeader.strapline}
+  .row
+    .col-xs-12.col-sm-8
+      p.lead 
+        a(href='/today/chrono') Продуктивность
+      p
+        img(src='/images/dailyGraph.png')
+      p.lead 
+        a(href='/today/plan') Важные дела
+        .row.list-group
+          each task in importantTasks
+            .col-xs-12.list-group-item
+              span.badge= task.priority 
+              = task.title
+      p.lead
+        a(href='/today/bullet') Важные события
+        .row.list-group
+          each event in importantEvents
+            .col-xs-12.list-group-item
+              = event.title
+              span.badge= event.time
+              p
+                each tag in event.tags
+                  span.label.label-warning= tag
+                  &nbsp;
+    .col-xs-12.col-sm-4
+      p.lead Погода
+        .row
+          .col-xs-12
+            h4 День
+            p 
+              img(src='http://icons.wxug.com/i/c/k/' + weather.day.image)
+              &nbsp;#{weather.day.desc}
+            h4 Ночь
+            p
+              img(src='http://icons.wxug.com/i/c/k/' + weather.night.image)
+              &nbsp;#{weather.night.desc}

@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  #banner.page-header
+    .row
+      .col-lg-6
+        h1= pageHeader.title
+          small &nbsp;#{pageHeader.strapline}
+  .row
+    .col-xs-12.col-sm-8
+      p.lead Дела на сегодня
+        .row.list-group
+          each task in tasks
+            .col-xs-12.list-group-item
+              span.badge= task.priority
+              = task.title
+              p 
+                each tag in task.tags
+                  span.label.label-warning= tag
+                  &nbsp;
+    .col-xs-12.col-sm-4.form-horizontal
+      p.lead Вопрос дня
+      p= question
+      label.control-label(for='dailyAnswer') Ответ:
+      textarea.form-control(id='dailyAnswer' rows='4')

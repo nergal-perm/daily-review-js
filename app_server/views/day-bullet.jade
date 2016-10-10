@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  #banner.page-header
+    .row
+      .col-lg-6
+        h1= pageHeader.title
+          small &nbsp;#{pageHeader.strapline}
+  .row
+    .col-xs-12.col-sm-8
+      p.lead События сегодняшнего дня
+        .row.list-group
+          each event in events
+            .col-xs-12.list-group-item
+              strong= event.title
+              span.badge.badge-default= event.time
+              p.small= event.desc
+              p
+              each tag in event.tags
+                  span.label.label-warning= tag
+                  &nbsp;
+    .col-xs-12.col-sm-4.form-horizontal
+      p.lead День за 300 букв
+      label.control-label(for='dailySummary') Ответ:
+      textarea.form-control(id='dailySummary' rows='4')
