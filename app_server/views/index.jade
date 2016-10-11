@@ -1,5 +1,16 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  #banner.page-header
+    .row
+      .col-lg-6
+        h1= pageHeader.title
+          small &nbsp;#{pageHeader.strapline}
+  .row
+    .col-xs-12.col-sm-8
+      p.lead Последние записи
+        .row.list-group
+        each day in days
+          .col-xs-12.list-group-item
+            strong= day.date
+            p.small= day.summary

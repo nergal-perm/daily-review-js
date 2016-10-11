@@ -29,14 +29,14 @@ var weatherSchema = new mongoose.Schema({
 });
 
 var daySchema = new mongoose.Schema({
-	date: { type: Date, default: Date.now },
 	question: String,
 	answer: String,
 	summary: String,
 	weather: weatherSchema,
 	tasks: [taskSchema],
 	events: [eventSchema],
-	chronos: [chronoSchema]
+	chronos: [chronoSchema],
+	date: Date
 });
 
 mongoose.model('Day', daySchema);
